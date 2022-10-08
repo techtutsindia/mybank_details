@@ -1,0 +1,51 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+
+    <Dialog id="moreBankDetails" title="Confidential Details">
+
+        <VBox id="vBox1" class="sapUiSmallMargin">
+
+            <HBox id="hBox1">
+                <Label id="lblacnum" text="Bank Account Number:" class="sapUiSmallMarginEnd"/>
+                <Text id="accountNum" text="7020923********"/>
+            </HBox>
+
+            <HBox id="hBox2">
+                <Label id="lblAcHolderNameId" text="Account Holder Name:" class="sapUiSmallMarginEnd"/>
+                <Text id="idAcHolderNameValue" text="Samarendra Kumar Mitra"/>
+            </HBox>
+
+            <HBox id="hBox3">
+                <Label id="lblIFSCId" text="IFS Code:" class="sapUiSmallMarginEnd"/>
+                <Text id="idIFSCValue" text="0000000****"/>
+            </HBox>
+
+            <HBox id="hBox4">
+                <Label id="lblCustId" text="Customer ID:" class="sapUiSmallMarginEnd"/>
+                <Text id="idCustValue" text="1234*****"/>
+            </HBox>
+
+            <HBox id="hBox5">
+                <Label id="lblAddressId" text="Address:" class="sapUiSmallMarginEnd"/>
+                <Text id="idAddressValue" text="**/** ************ *********"/>
+            </HBox>
+
+        </VBox>
+
+        <beginButton>
+
+            <Button id="closeBtn" text="Close" press=".onCloseBankDetails" />
+
+        </beginButton>
+
+
+
+    </Dialog>
+
+
+
+
+
+
+</core:FragmentDefinition>
