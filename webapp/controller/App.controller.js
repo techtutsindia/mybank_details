@@ -10,7 +10,20 @@ sap.ui.define([
         return Controller.extend("com.sap.mybankdetails.controller.App", {
             onInit: function () {
 
-              
+                //   debugger
+                /* Checking browser language and setting the 
+                global resource model */
+
+                var appLang;
+                if (navigator.language == "es")
+                    appLang = "i18n_es";
+                else if (navigator.language == "en")
+                    appLang = "i18n";
+                else
+                    appLang = "i18n";
+
+                var i18nModel = this.getOwnerComponent().getModel(appLang);
+                this.getOwnerComponent().setModel(i18nModel, "i18n");
 
             },
 
