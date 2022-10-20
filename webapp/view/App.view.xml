@@ -10,11 +10,20 @@
             <content>
 
 
-              
+
+        
                         <core:Fragment id="bankDetailsfragment"    
-                  fragmentName ="com.sap.mybankdetails.view.fragments.BankDetails" type="XML" />
-                        <Button id="openBankDetails" type="Neutral" text="{i18n>findMoreBtn}" class="sapUiSmallMarginBegin" press=".onOpenBankDetails" />
-                   
+                  fragmentName ="com.sap.mybankdetails.view.fragments.BankDetails" 
+                  type="XML" />
+                        <Button id="openBankDetails" 
+                        type="Neutral" 
+                        text="{i18n>findMoreBtn}" 
+                        class="sapUiSmallMarginBegin" 
+                        press=".onOpenBankDetails" />	
+		
+             
+                  
+                  
 
             </content>
         </Page>
