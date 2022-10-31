@@ -9,21 +9,42 @@
             </headerContent>
             <content>
 
+                <!-- Bank Details Fragment -->
+                <core:Fragment id="bankDetailsfragment"    
+                fragmentName ="com.sap.mybankdetails.view.fragments.BankDetails" type="XML" />
+
+                <Panel id="pCards" expandable="true" headerText="Cards Details" width="auto" class="sapUiResponsiveMargin">
+                    <content>
+
+                        <List id="myList" items="" width="50%">
+                            <items>
+                                <StandardListItem id="card1" title="Master Card (123679847298749834)" 
+                                description="Dabit Card: assigned on 23 Aug 2017" 
+                                icon="sap-icon://credit-card" iconInset="false" 
+                                highlight="Information" info="Active" infoState="Information" 
+                                infoStateInverted="true" />
+
+                                <StandardListItem id="card2" title="Visa (1223232347298749834)" 
+                                description="Credit Card: assigned on 20 Oct 2020" 
+                                icon="sap-icon://credit-card" iconInset="false"
+                                 highlight="Error" info="Expired" infoState="Error" infoStateInverted="true" />
+
+                                <StandardListItem id="card3" 
+                                title="Master Card (123679847298749834)" 
+                                description="Dabit Card: assigned on 23 Aug 2017" 
+                                icon="sap-icon://credit-card" iconInset="false" highlight="Success" 
+                                info="Active" infoState="Success" infoStateInverted="true" />
 
 
-        
-                        <core:Fragment id="bankDetailsfragment"    
-                  fragmentName ="com.sap.mybankdetails.view.fragments.BankDetails" 
-                  type="XML" />
-                        <Button id="openBankDetails" 
-                        type="Neutral" 
-                        text="{i18n>findMoreBtn}" 
-                        class="sapUiSmallMarginBegin" 
-                        press=".onOpenBankDetails" />	
-		
-             
-                  
-                  
+                            </items>
+                        </List>
+
+                    </content>
+                </Panel>
+
+
+
+
 
             </content>
         </Page>

@@ -1,28 +1,44 @@
 <core:FragmentDefinition xmlns:core = "sap.ui.core"
     xmlns="sap.m">
-    <VBox id="vBox1" class="sapUiSmallMargin">
 
-        <Title text="{i18n>accDetails}" id="accDetails" level="H1"/>
-
-        <HBox id="hBox1">
-            <Label id="lblacnum" text="{i18n>accNum}" class="sapUiSmallMarginEnd"/>
-            <Text id="accountNum" text="7020923********"/>
-        </HBox>
-
-        <HBox id="hBox2">
-            <Label id="lblAcHolderNameId" text="{i18n>accHName}" class="sapUiSmallMarginEnd"/>
-            <Text id="idAcHolderNameValue" text="Samarendra Kumar Mitra"/>
-        </HBox>
-
-        <HBox id="hBox3" class="sapUiSmallMarginBottom">
-            <Label id="lblIFSCId" text="{i18n>iFSCode}" class="sapUiSmallMarginEnd"/>
-            <Text id="idIFSCValue" text="0000000****"/>
-        </HBox>
-
-    </VBox>
+    <Panel id="pAccountDetails" expandable="false" headerText="Account Details" width="auto" class="sapUiResponsiveMargin">
+        <content>
 
 
+            <HBox id="hBox4">
 
+                <Avatar id="aUserProfile" src="" displaySize="XL" showBorder="true" press="onPress"/>
+
+
+                <VBox id="vBox1" class="sapUiSmallMargin sapUiLargeMarginBegin">
+
+                    <!-- <Title text="{i18n>accDetails}" id="accDetails" level="H1"/> -->
+
+                    <HBox id="hBox1">
+                        <Label id="lblacnum" text="{i18n>accNum}" class="sapUiSmallMarginEnd"/>
+                        <Text id="accountNum" text="7020923********"/>
+                    </HBox>
+
+                    <HBox id="hBox2">
+                        <Label id="lblAcHolderNameId" text="{i18n>accHName}" class="sapUiSmallMarginEnd"/>
+                        <Text id="idAcHolderNameValue" text="Samarendra Kumar Mitra"/>
+                    </HBox>
+
+                    <HBox id="hBox3" class="sapUiSmallMarginBottom">
+                        <Label id="lblIFSCId" text="{i18n>iFSCode}" class="sapUiSmallMarginEnd"/>
+                        <Text id="idIFSCValue" text="0000000****"/>
+                    </HBox>
+
+
+                    <Button id="openBankDetails" type="Neutral" text="{i18n>findMoreBtn}" press=".onOpenBankDetails" />
+
+                </VBox>
+
+            </HBox>
+
+
+        </content>
+    </Panel>
 
 
 
