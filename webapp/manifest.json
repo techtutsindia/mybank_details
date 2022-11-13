@@ -16,7 +16,12 @@
             "toolsId": "03ce3c06-9275-428d-9b88-31e5d410dfa3"
         },
         "dataSources": {
-            "mainService": {
+
+         "JsonModel" : {
+            "uri": "model/bankdetails.json",
+            "type": "json"
+         },
+        "mainService": {
                 "uri": "/sap/opu/odata/",
                 "type": "OData",
                 "settings": {
@@ -74,6 +79,11 @@
                 "settings": {
                     "bundleName": "com.sap.mybankdetails.i18n.i18n_es"
                 }
+            },
+          
+            "oBankDetails": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "JsonModel"
             },
             "": {
                 "dataSource": "mainService",

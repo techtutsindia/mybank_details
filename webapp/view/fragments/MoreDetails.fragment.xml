@@ -4,31 +4,33 @@
 
     <Dialog id="moreBankDetails" title="{i18n>confDetail}">
 
-        <VBox id="vBox1" class="sapUiSmallMargin">
+        <VBox id="vBox1" binding="{oBankDetails>/accountdetails}" class="sapUiSmallMargin">
 
             <HBox id="hBox1">
                 <Label id="lblacnum" text="{i18n>accNum}" class="sapUiSmallMarginEnd"/>
-                <Text id="accountNum" text="7020923********"/>
+                <Text id="accountNum" text="{oBankDetails>accountnum}"/>
             </HBox>
 
             <HBox id="hBox2">
                 <Label id="lblAcHolderNameId" text="{i18n>accHName}" class="sapUiSmallMarginEnd"/>
-                <Text id="idAcHolderNameValue" text="Samarendra Kumar Mitra"/>
+                <Text id="idAcHolderNameValue" text="{oBankDetails>name}"/>
             </HBox>
 
             <HBox id="hBox3">
                 <Label id="lblIFSCId" text="{i18n>iFSCode}" class="sapUiSmallMarginEnd"/>
-                <Text id="idIFSCValue" text="0000000****"/>
+                <Text id="idIFSCValue" text="{oBankDetails>ifsc}"/>
             </HBox>
 
             <HBox id="hBox4">
                 <Label id="lblCustId" text="{i18n>custID}" class="sapUiSmallMarginEnd"/>
-                <Text id="idCustValue" text="1234*****"/>
+                <Text id="idCustValue" text="{oBankDetails>customerid}"/>
             </HBox>
 
             <HBox id="hBox5">
-                <Label id="lblAddressId" text="" class="sapUiSmallMarginEnd"/>
-                <Text id="idAddressValue" text="**/** ************ *********"/>
+                <Label id="lblAddressId" text="{i18n>address}" class="sapUiSmallMarginEnd"/>
+                <Text id="idAddressValue" text="{oBankDetails>address/housenumber}, {oBankDetails>address/street}, 
+                {oBankDetails>address/city},
+                {oBankDetails>address/state}, {oBankDetails>address/country}"/>
             </HBox>
 
         </VBox>
