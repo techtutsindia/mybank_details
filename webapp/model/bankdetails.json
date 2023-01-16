@@ -35,5 +35,9 @@
             "assignmentdate": "assigned on 23 Aug 2017",
             "state": true
         }
-    ]
+    ],
+    "housespending": 65000.0,
+    "emi": 21500.0,
+    "entertainment": 41500.0,
+    "empsalary": 100000
 }
