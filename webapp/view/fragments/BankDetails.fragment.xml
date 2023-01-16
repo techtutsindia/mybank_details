@@ -1,5 +1,8 @@
 <core:FragmentDefinition xmlns:core = "sap.ui.core"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:m= "sap.suite.ui.microchart"
+	xmlns:layout="sap.ui.layout"
+    >
 
     <Panel id="pAccountDetails" expandable="false"  width="auto" class="sapUiResponsiveMargin">
        <!-- headerText="Account Details"  Removed as per the new requirement by Naveen  -->
@@ -38,6 +41,32 @@
 
                 </VBox>
 
+
+	<FlexBox id="flexBox1" width="20rem" height="10rem" alignItems="Start" justifyContent="SpaceBetween">
+		<items>
+			<m:InteractiveDonutChart id="donutchart" selectionChanged="onSelectionChanged">
+				<m:segments>
+					<m:InteractiveDonutChartSegment id="chart1" 
+                    label="{i18n>houseSpending}" value="{oBankDetails>/housespending}" 
+                    displayedValue="{path: 'oBankDetails>/housespending', 
+                    formatter: '.formatter.getPercentage'}%" 
+                    color="{path: 'oBankDetails>/housespending', formatter: '.formatter.getState'}"/>
+					<m:InteractiveDonutChartSegment id="chart2" 
+                    label="{i18n>loanEMI}" 
+                    value="{oBankDetails>/emi}" 
+                    displayedValue="{path: 'oBankDetails>/emi', 
+                    formatter: '.formatter.getPercentage'}%" 
+                    color="{path: 'oBankDetails>/emi',formatter: '.formatter.getState'}"/>
+					<m:InteractiveDonutChartSegment id="chart3" 
+                    label="{i18n>entertainment}" 
+                    value="{oBankDetails>/entertainment}" 
+                    displayedValue="{path:'oBankDetails>/entertainment',
+                    formatter: '.formatter.getPercentage'}%"
+                    color="{path: 'oBankDetails>/entertainment', formatter:'.formatter.getState'}"/>
+				</m:segments>
+			</m:InteractiveDonutChart>
+		</items>
+	</FlexBox>
             </HBox>
 
 

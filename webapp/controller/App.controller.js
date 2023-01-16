@@ -1,28 +1,24 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "sap/ui/core/mvc/Controller",
+    "../model/formatter"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller) {
+    function (Controller, formatter) {
         "use strict";
 
         return Controller.extend("com.sap.mybankdetails.controller.App", {
+            formatter:formatter,
             onInit: function () {
                 /* Setting Global JSON Model */
                 this._setGlobalModel();
             
                 /* Checking browser language and setting the global resource model */
                 this._setGlobalLanguage();
-              
-              
-                    
-              
-                let oProfileModel = new sap.ui.model.json.JSONModel(
-               { profile: sap.ui.require.toUrl("com/sap/mybankdetails/images/profile.jpeg") });
-              this.getView().setModel(oProfileModel);
 
 
+                this.getUserProfile();
 
             },
 
@@ -36,7 +32,7 @@ sap.ui.define([
                     );
                 }
 
-                this.moreBankDetails.then(
+            this.moreBankDetails.then(
                     function (oDialog) {
                         oDialog.open();
                     });
@@ -48,8 +44,25 @@ sap.ui.define([
 
             },
 
+            getUserProfile: function(){
+                let oProfileModel = new sap.ui.model.json.JSONModel(
+                    { profile: sap.ui.require.toUrl("com/sap/mybankdetails/images/profile.jpeg") });
+                   this.getView().setModel(oProfileModel);
+            },
+        
+        /**
+		 * Creates a message for a selection change event on the chart
+		 */
+		onSelectionChanged: function (oEvent) {
+			var oSegment = oEvent.getParameter("segment");
+            let oValue = oSegment.getValue();
+            let empSalary = this.getOwnerComponent().getModel("oBankDetails").getProperty("/empsalary");
+            let persentageVal = (oValue / empSalary) * 100;
+			sap.m.MessageToast.show("The selection changed: " + oSegment.getLabel() + " " + 
+            ((persentageVal >50) ? "Critical" : "Moderate"));
+		},
 
-            _setGlobalModel: function(){
+        _setGlobalModel: function(){
                 let oModel = this.getOwnerComponent().getModel("oBankDetails");
                 this.getView().setModel(oModel); 
             },
