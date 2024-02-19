@@ -118,7 +118,7 @@
                                     </Column>
                                 </columns>
                                 <items>
-                                    <ColumnListItem vAlign="Middle">
+                                    <ColumnListItem vAlign="Middle"  type="Navigation"  press=".onPress">
                                         <cells>
                                             <ObjectNumber
                                                 number="{oBankDetails>dateandtime}"

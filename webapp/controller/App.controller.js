@@ -87,6 +87,17 @@ sap.ui.define([
 
                 i18nModel = this.getOwnerComponent().getModel(appLang);
                 this.getOwnerComponent().setModel(i18nModel, "i18n");
+            },
+
+            onPress: function (oEvent) {
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("transactiondetails");
+                var oItem = oEvent.getSource();
+                
+                // oRouter.navTo("DetalleOficina", {
+                //     invoicePath: oItem.getBindingContext("invoice").getPath().substr(1)
+                // });
+
             }
         });
     });

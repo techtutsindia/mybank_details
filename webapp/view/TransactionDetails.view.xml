@@ -1,0 +1,32 @@
+<mvc:View
+    controllerName="com.sap.mybankdetails.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="transactiondetails"
+        title="Transaction Details"
+        showNavButton="true"
+        navButtonPress=".onNavBack"
+        class="sapUiResponsiveContentPadding"
+    >
+        <content>
+            <List
+                id="transactiondetails1"
+                headerText=""
+                items=""
+            >
+                <items>
+                    <!-- <StandardListItem
+                        title="{FirstName} {LastName}"
+                        iconDensityAware="false"
+                        iconInset="false"
+                        type="Navigation"
+                        press=".onListItemPressed"
+                    /> -->
+                </items>
+            </List>
+        </content>
+    </Page>
+</mvc:View>
