@@ -1,22 +1,194 @@
-<mvc:View controllerName="com.sap.mybankdetails.controller.App"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+<mvc:View
+    controllerName="com.sap.mybankdetails.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
     xmlns="sap.m"
+    xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:core="sap.ui.core"
+    xmlns:card="sap.f.cards"
+    xmlns:w="sap.ui.integration.widgets"
+    xmlns:m= "sap.suite.ui.microchart"
     class="sapUiSizeCompact"
-    >
+>
     <App id="app">
-        <Page id="page" title="{i18n>appTitle}">
+        <Page
+            id="page"
+            title="{i18n>appTitle}"
+        >
             <headerContent>
-                <Button id="demoBtn" type="Emphasized" text="{i18n>home}"/>
+                <Button
+                    id="demoBtn"
+                    type="Emphasized"
+                    text="{i18n>home}"
+                />
             </headerContent>
             <content>
-
                 <!-- Bank Details Fragment -->
-                <core:Fragment id="bankDetailsfragment"    
-                fragmentName ="com.sap.mybankdetails.view.fragments.BankDetails" type="XML" />
+                <core:Fragment
+                    id="bankDetailsfragment"
+                    fragmentName="com.sap.mybankdetails.view.fragments.BankDetails"
+                    type="XML"
+                />
                 <!-- Card Details Fragment -->
-               <core:Fragment id="cardDetailsfragment"    
-                fragmentName ="com.sap.mybankdetails.view.fragments.CardDetails" type="XML" />
+                <!-- <core:Fragment id="cardDetailsfragment"    
+                fragmentName ="com.sap.mybankdetails.view.fragments.CardDetails" type="XML" /> -->
+                <IconTabBar
+                    id="idIconTabBarNoIcons"
+                    expanded="{device>/isNoPhone}"
+                    class="sapUiResponsiveContentPadding"
+                >
+                    <items>
+                        <IconTabFilter
+                            text="Card Details"
+                            key="CardDetails"
+                        >
+                            <!-- <Text text="Info content goes here ..." /> -->
+                            <List
+                                id="myList"
+                                items="{oBankDetails>/carddetails}"
+                            >
+                                <items>
+                                    <StandardListItem
+                                        id="card1"
+                                        title="{=${oBankDetails>cardcompany}.toUpperCase()} ({oBankDetails>cardnumber})"
+                                        description="{=${oBankDetails>cardtype}.toUpperCase()} {oBankDetails>assignmentdate}"
+                                        icon="sap-icon://credit-card"
+                                        iconInset="false"
+                                        highlight="{=${oBankDetails>state} === true ? 'Success': 'Error' }"
+                                        info="{=${oBankDetails>state} === true ? 'Active': 'Expired' }"
+                                        infoState="{=${oBankDetails>state} === true ? 'Success': 'Error' }"
+                                        infoStateInverted="true"
+                                    />
+                                </items>
+                            </List>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Transaction Details"
+                            key="TransactionDetails"
+                        >
+                            <Table
+                                id="table1"
+                                items="{oBankDetails>/Transactiondetails}"
+                            >
+                                <columns>
+                                    <Column
+                                        id="col1"
+                                        width="12em"
+                                    >
+                                        <Text
+                                            id="Dateandtime"
+                                            text="Date and Time"
+                                        />
+                                    </Column>
+                                    <Column
+                                        id="col2"
+                                        width="12em"
+                                    >
+                                        <Text
+                                            id="invoiceno"
+                                            text="Invoice No."
+                                        />
+                                    </Column>
+                                    <Column
+                                        id="col3"
+                                        width="12em"
+                                    >
+                                        <Text
+                                            id="type"
+                                            text="Type"
+                                        />
+                                    </Column>
+                                    <Column
+                                        id="col4"
+                                        width="12em"
+                                    >
+                                        <Text
+                                            id="Amount"
+                                            text="Amount"
+                                        />
+                                    </Column>
+                                    <Column
+                                        id="col5"
+                                        width="12em"
+                                    >
+                                        <Text
+                                            id="Status"
+                                            text="Status"
+                                        />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem vAlign="Middle">
+                                        <cells>
+                                            <ObjectNumber
+                                                number="{oBankDetails>dateandtime}"
+                                            />
+                                            <ObjectIdentifier
+                                                text="{oBankDetails>invoicenumber}"
+                                            />
+                                            <ObjectIdentifier
+                                                text="{oBankDetails>cardtype}"
+                                            />
+                                            <ObjectIdentifier
+                                                text="{oBankDetails>amount}"
+                                            />
+                                            <ObjectIdentifier
+                                                text="{oBankDetails>state}"
+                                            />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            id="icontab3"
+                            text="Expenses"
+                            key="Expenses"
+                        >
+                            <FlexBox
+                                id="flexBox1"
+                                width="20rem"
+                                height="10rem"
+                                alignItems="Start"
+                                justifyContent="SpaceBetween"
+                            >
+                                <items>
+                                    <m:InteractiveDonutChart
+                                        id="donutchart"
+                                        selectionChanged="onSelectionChanged"
+                                    >
+                                        <m:segments>
+                                            <m:InteractiveDonutChartSegment
+                                                id="chart1"
+                                                label="{i18n>houseSpending}"
+                                                value="{oBankDetails>/housespending}"
+                                                displayedValue="{path: 'oBankDetails>/housespending', 
+                                                    formatter: '.formatter.getPercentage'}%"
+                                                color="{path: 'oBankDetails>/housespending', formatter: '.formatter.getState'}"
+                                            />
+                                            <m:InteractiveDonutChartSegment
+                                                id="chart2"
+                                                label="{i18n>loanEMI}"
+                                                value="{oBankDetails>/emi}"
+                                                displayedValue="{path: 'oBankDetails>/emi', 
+                                                formatter: '.formatter.getPercentage'}%"
+                                                color="{path: 'oBankDetails>/emi',formatter: '.formatter.getState'}"
+                                            />
+                                            <m:InteractiveDonutChartSegment
+                                                id="chart3"
+                                                label="{i18n>entertainment}"
+                                                value="{oBankDetails>/entertainment}"
+                                                displayedValue="{path:'oBankDetails>/entertainment',
+                                                    formatter: '.formatter.getPercentage'}%"
+                                                color="{path: 'oBankDetails>/entertainment', formatter:'.formatter.getState'}"
+                                            />
+                                        </m:segments>
+                                    </m:InteractiveDonutChart>
+                                </items>
+                            </FlexBox>
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
             </content>
         </Page>
     </App>
