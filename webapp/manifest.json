@@ -113,6 +113,11 @@
                     "target": [
                         "TargetApp"
                     ]
+                },
+                {
+                    "name": "TransactionDetails",
+                    "pattern": "TransactionDetails",
+                    "target": "TransactionDetails"
                 }
             ],
             "targets": {
@@ -122,6 +127,13 @@
                     "clearControlAggregation": false,
                     "viewId": "App",
                     "viewName": "App"
+                },
+                "TransactionDetails": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "TransactionDetails",
+                    "viewName": "TransactionDetails"
                 }
             }
         },

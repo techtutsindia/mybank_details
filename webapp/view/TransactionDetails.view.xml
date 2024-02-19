@@ -4,29 +4,22 @@
     displayBlock="true"
     xmlns="sap.m"
 >
-    <Page
-        id="transactiondetails"
-        title="Transaction Details"
-        showNavButton="true"
-        navButtonPress=".onNavBack"
-        class="sapUiResponsiveContentPadding"
-    >
-        <content>
-            <List
-                id="transactiondetails1"
-                headerText=""
-                items=""
-            >
-                <items>
-                    <!-- <StandardListItem
-                        title="{FirstName} {LastName}"
-                        iconDensityAware="false"
-                        iconInset="false"
-                        type="Navigation"
-                        press=".onListItemPressed"
-                    /> -->
-                </items>
-            </List>
-        </content>
-    </Page>
+    <App id="TransactionDetails">
+        <Page
+            id="TransactionDetails2"
+            title="Transaction Details"
+            showNavButton="true"
+            navButtonPress=".onNavBack"
+            class="sapUiResponsiveContentPadding"
+        >
+            <content>
+               <ObjectHeader
+               id="Header"
+                title=""
+			    backgroundDesign="Solid"
+               >
+               </ObjectHeader>
+            </content>
+        </Page>
+    </App>
 </mvc:View>

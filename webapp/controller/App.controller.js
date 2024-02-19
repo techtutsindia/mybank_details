@@ -1,11 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "../model/formatter"
+    "../model/formatter",
+    "sap/ui/core/routing/History"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, formatter) {
+    function (Controller, formatter,History) {
         "use strict";
 
         return Controller.extend("com.sap.mybankdetails.controller.App", {
@@ -91,13 +92,26 @@ sap.ui.define([
 
             onPress: function (oEvent) {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("transactiondetails");
+                oRouter.navTo("TransactionDetails");
                 var oItem = oEvent.getSource();
+                var headerdetails = oItem.mAggregations.cells[3].mProperties;
                 
                 // oRouter.navTo("DetalleOficina", {
                 //     invoicePath: oItem.getBindingContext("invoice").getPath().substr(1)
                 // });
 
+            },
+
+            onNavBack: function () {
+                var oHistory, sPreviousHash;
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oHistory = History.getInstance();
+                sPreviousHash = oHistory.getPreviousHash();
+                if (sPreviousHash !== undefined) {
+                    window.history.go(-1);
+                } else {
+                    oRouter.navTo("RouteApp", {}, true /*no history*/);
+                }
             }
         });
     });
